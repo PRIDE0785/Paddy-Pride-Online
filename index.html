@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Computer Scientist Paddy Pride</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .dark-mode {
+      background-color: #121212;
+      color: #ffffff;
+    }
+
+    .theme-toggle {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      z-index: 999;
+    }
+
+    .theme-toggle label {
+      cursor: pointer;
+      position: relative;
+      display: inline-block;
+    }
+
+    .theme-toggle label::after {
+      content: "Switch between light and dark mode";
+      position: absolute;
+      top: 25px;
+      right: 0;
+      background: #333;
+      color: #fff;
+      padding: 4px 8px;
+      font-size: 12px;
+      border-radius: 4px;
+      white-space: nowrap;
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+    }
+
+    .theme-toggle label:hover::after {
+      opacity: 1;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 15px;
+    }
+
+    .section {
+      padding: 40px 0;
+    }
+
+    .section h2 {
+      margin-bottom: 20px;
+      font-size: 24px;
+      color: #4A90E2;
+    }
+
+    .profile-image {
+      width: 300px;
+      height: 300px;
+      margin: 0 auto 15px;
+      overflow: hidden;
+      border-radius: 50%;
+      border: 4px solid var(--primary-color, #4A90E2);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .profile-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    h1 span {
+      display: inline-block;
+      opacity: 0;
+      animation: fadeIn 2s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      0% {
+        transform: translateY(-20px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .btn {
+      background-color: #4A90E2;
+      color: #fff;
+      padding: 6px 14px;
+      border: none;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #3b7bd5;
+    }
+
+    .skills-list, ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .skills-list li, ul li {
+      margin-bottom: 6px;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 15px;
+    }
+
+    .project-card {
+      background: #f9f9f9;
+      padding: 10px;
+      border-radius: 8px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    }
+
+    .dark-mode .project-card {
+      background: #1e1e1e;
+    }
+
+    form input, form textarea {
+      width: 100%;
+      margin-bottom: 8px;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-family: 'Inter', sans-serif;
+    }
+.capt{
+font-family:Arial;
+font-size:14px;
+color:black;
+text-decoration:underline;
+}
+
+    .socials a {
+      margin-right: 8px;
+      color: inherit;
+      font-size: 18px;
+    }
+ footer {
+      text-align: center;
+      padding: 1rem;
+      background: #222;
+      color: white;
+    }
+    .social-links a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+    .dark-mode footer {
+      background: #1a1a1a;
+    }
+.profile-container {
+  display: flex;
+  justify-content: center;
+  margin: 40px 20px;
+}
+
+.profile-card {
+  background: #fff;
+  padding: 20px;
+  width: 350px;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.profile-card:hover,
+.profile-card:focus {
+  transform: scale(1.05);
+}
+
+.short-bio {
+  color: #666;
+  font-size: 0.95rem;
+}
+
+.full-bio {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease-in-out;
+  font-size: 0.9rem;
+  color: #333;
+  margin-top: 10px;
+}
+
+.profile-card:hover .full-bio,
+.profile-card:focus .full-bio {
+  max-height: 200px;
+}
+
+  </style>
+</head>
+<body>
+  <div class="theme-toggle">
+    <input type="checkbox" id="theme-switch" />
+    <label for="theme-switch">🌙</label>
+  </div>
+
+  <!-- Hero Section -->
+  <header class="hero" data-aos="fade-in">
+    <div class="container">
+      <div class="profile-image">
+        <img id="rotating-image" src="img1.png" alt="Profile Image">
+      </div>
+      <h1>Hello, I'm <span>Paddy Pride</span></h1>
+      <p>A passionate Computer Scientist</p>
+      <a href="#contact" class="btn">Connect With Me</a>
+    </div>
+<section class="profile-container">
+  <div class="profile-card" tabindex="0">
+    <h2>Paddy Pride</h2>
+    <p class="short-bio">Click or hover to learn more about me and what inspired me into Tech</p>
+    <div class="full-bio">
+      <p>
+        I'm Paddy Pride, born and raised in Kyangwali Refugee Camp Western Uganda .A passionate Computer Scientist with a deep interest in software development, networking,
+        AI, and cybersecurity. My journey started with curiosity for how computers work and what tech entails which evolved into
+        building creative solutions that impact people’s lives and transform communities
+        I’ve built several innovative projects and am always seeking opportunities to grow and collaborate.
+      </p>
+    </div>
+  </div>
+</section>
+
+</section>
+
+  </header>
+
+  <!-- About Section -->
+  <section class="section" id="about">
+    <div class="container">
+      <h2>About Me</h2>
+      <p>I am a dedicated computer science student with interests in software development, networking, cybersecurity, and artificial intelligence. I love creating impactful solutions through technology.</p>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section class="section" id="skills">
+    <div class="container">
+      <h2>Skills</h2>
+      <ul class="skills-list">
+        <li>HTML, CSS, JavaScript</li>
+        <li>Python, Java</li>
+        <li>React, Node.js</li>
+        <li>Networking & Cybersecurity</li>
+        <li>Database Management</li>
+        <li>Web Design and Development</li>
+        <li>Project Planning</li>
+        <li>Statistics and Analytics</li>
+        <li>Computer Repair and Maintenance</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section class="section" id="projects">
+    <div class="container">
+      <h2>Projects</h2>
+      <div class="project-grid">
+        <div class="project-card">
+          <h3>Vehicle Rental System</h3>
+          <p>A GUI-based system for booking and managing rental vehicles built in Java.</p>
+        </div>
+        <div class="project-card">
+          <h3>Personal Portfolio Website</h3>
+          <p>A modern responsive portfolio site created using HTML, CSS, and JavaScript.</p>
+</div>
+       <div class="project-card">
+      <i class="fas fa-network-wired"></i>
+      <h3>Network Simulation</h3>
+      <p>Designed and simulated a local network with security protocols.</p>
+    </div>
+ <div class="project-card">
+      <i class="fas fa-database"></i>
+      <h3>Student Record System</h3>
+      <p>CRUD system to manage university records using Java and MySQL.</p>
+    </div>
+ <div class="project-card">
+      <i class="fas fa-shield-alt"></i>
+      <h3>Cybersecurity Scanner</h3>
+      <p>Tool to scan for vulnerabilities and apply encryption layers.</p>
+    </div>
+<div class="project-card">
+      <i class="fas fa-futbol"></i>
+      <h3>Football Game Simulation</h3>
+      <p>Simulation of a football match with animated players and scoring logic.  Built in Python (Pygame), Java (Swing/JavaFX)</p>
+    </div>
+      </div>
+    </div>
+  </section>
+<section class="section" id="Consult">
+<div class="container">
+    <h2>Consult Me <span class="capt">(Lets grow together)</span></h2>
+    <label for="consult">Choose an area:</label>
+    <select id="consult">
+      <option>Web Development</option>
+      <option>Cybersecurity</option>
+      <option>AI/Machine Learning</option>
+      <option>Java Projects</option>
+    </select>
+<h2>Resume</h2>
+    <a href="Resume.pdf" download>Download My Resume (PDF)</a>
+ </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="section" id="contact">
+    <div class="container">
+      <h2>Contact</h2>
+      <form>
+        <input type="text" placeholder="Your Name" required />
+        <input type="email" placeholder="Your Email" required />
+        <textarea placeholder="Your Message" rows="4" required></textarea>
+        <button type="submit" class="btn">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+  <div class="social-links">
+      <a href="https://github.com/PRIDE0785"><i class="fab fa-github"></i> GitHub</a>
+      <a href="https://linkedin.com/in/PADDY PRIDE"><i class="fab fa-linkedin"></i> LinkedIn</a>
+      <a href="https://X.com/pride122349"><i class="fab fa-X"></i> Twitter</a>
+      <a href="mailto:paddypride500@gmail.com" class="hover:text-blue-400">Email</a>
+    </div>
+
+    </div>
+    <p>&copy; 2025 Computer Scientist Paddy Pride. All rights reserved.</p>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+
+    const themeSwitch = document.getElementById('theme-switch');
+    themeSwitch.addEventListener('change', () => {
+      document.body.classList.toggle('dark-mode');
+    });
+
+    // Rotating image script
+    const images = ['img1.png', 'img2.jpg', 'img3.jpg'];
+    let imgIndex = 0;
+    setInterval(() => {
+      imgIndex = (imgIndex + 1) % images.length;
+      document.getElementById('rotating-image').src = images[imgIndex];
+    }, 4000);
+  </script>
+</body>
+</html>
