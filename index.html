@@ -14,6 +14,39 @@
       padding: 0;
       transition: background 0.3s, color 0.3s;
     }
+header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #007acc;
+  color: white;
+  text-align: center;
+  gap: 10px;
+}
+
+header h1 {
+  flex: 1 1 100%;
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+@media (min-width: 600px) {
+  header {
+    flex-direction: row;
+    text-align: left;
+  }
+
+  header h1 {
+    flex: 1;
+    font-size: 2rem;
+  }
+
+  .theme-switch {
+    margin-left: auto;
+  }
+}
 
     .dark-mode {
       background-color: #121212;
