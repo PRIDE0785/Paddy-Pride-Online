@@ -664,50 +664,7 @@
       height: 100%;
       object-fit: cover;
       transition: opacity 0.5s ease-in-out;
-    }
-.dark-mode {
-      background-color: #121212;
-      color: #ffffff;
-    }
-
-    .theme-toggle {
-      position: fixed;
-      top: 10px;
-      right: 10px;
-      z-index: 999;
-    }
-
-    .theme-toggle label {
-      cursor: pointer;
-      position: relative;
-      display: inline-block;
-    }
-
-    .theme-toggle label::after {
-      content: "Switch between light and dark mode";
-      position: absolute;
-      top: 25px;
-      right: 0;
-      background: #333;
-      color: #fff;
-      padding: 4px 8px;
-      font-size: 12px;
-      border-radius: 4px;
-      white-space: nowrap;
-      opacity: 0;
-      transition: opacity 0.3s;
-      pointer-events: none;
-    }
-
-    .theme-toggle label:hover::after {
-      opacity: 1;
-    }
-.dark-mode footer {
-      background: #1a1a1a;
-    }
-  .dark-mode .project-card {
-      background: #1e1e1e;
-    }
+    }
 .short-bio {
   color: #666;
   font-size: 0.95rem;
@@ -746,8 +703,7 @@
 .profile-card:hover,
 .profile-card:focus {
   transform: scale(1.05);
-}
-
+}
     </style>
 </head>
 <body>
@@ -774,11 +730,7 @@
         </div>
     </header>
     <!-- Hero Section -->
-    <section class="hero">
- <div class="theme-toggle">
-    <input type="checkbox" id="theme-switch" />
-    <label for="theme-switch">🌙</label>
-  </div>
+    <section class="hero">
         <div class="container">
             <div class="hero-content">
                 <h1 class="animate">Paddy Pride</h1>
